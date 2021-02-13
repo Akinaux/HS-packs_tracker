@@ -506,6 +506,7 @@ fct_display() {
   fi
   if [[ ${format} == "html" ]]
   then
+    echo "</html>" >> ${HTMLFILE}
     if [[ $(dirname ${HTMLFILE}) == "." ]]
     then
       HTMLFILE="$(pwd)/$(basename ${HTMLFILE})"
@@ -635,7 +636,7 @@ case $ACTION in
   display)
     if [[ $format == "html" ]]
     then
-      echo "<style>
+      echo "<html><style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
