@@ -101,10 +101,10 @@ Number of packs opened: 98
 -----------------------------------------
 ~~~
 
-#### Display a html format.
+#### Display the packs and pity timer of the extension DARKMOON_FAIRE in a html format.
 ~~~
 $ ./packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p
 Progress : [########################################] 100% (98/98)
 URL to Access the HTML file: file:///Users/[...]/packs_tracker_DARKMOON_FAIRE.html
 ~~~
-[HTML sample file](samples/packs_tracker_DARKMOON_FAIRE.html)
+[HTML sample file](https://htmlpreview.github.io/?https://github.com/Akinaux/HS-packs_tracker/blob/main/samples/packs_tracker_DARKMOON_FAIRE.html)
