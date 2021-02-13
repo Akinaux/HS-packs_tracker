@@ -53,18 +53,18 @@ The supported formats are:
 - ASCII (using colors to identify the card rarity). A 'G' tag will follow the Golden cards.
 - HTML (generating a local file to display the pack content)
 
-ASCII is the default, it use less resouce and provide enough visibility of the packs.
-HTML will display each cards in a format w:128px h:184px, golden cards will match the animated version
-To set the format, use the -f option
+**ASCII** is the default, it use less resouce and provide enough visibility of the packs.
+**HTML** will display each cards in a format w:128px h:184px, golden cards will match the animated version.
+To set the format, use the **-f** option
 
 It's currently not possible to display specific packs (like class or golden packs), but you can filter on the last X packs or on a specific extension.
-Using the -t option will allow you to display the last X packs (X is a number)
+- Using the -t option will allow you to display the last X packs (X is a number)
 
 In addition or in replacement of the card packs, you can display the pity timers of each extension.
 Please note that the pity timers are based on the packs available in the json file.
 If your last legendary pack is missing in the database, the legendary pity timer will be based on your previous legendary pack.
-Using the -p option will add the pity timer list at the end of the packs presentation.
-Using the -P option will only display the pity timers (pack list will be omitted).
+- Using the -p option will add the pity timer list at the end of the packs presentation.
+- Using the -P option will only display the pity timers (pack list will be omitted).
 
 ### Examples:
 
@@ -112,11 +112,17 @@ URL to Access the HTML file: file:///Users/[...]/packs_tracker_DARKMOON_FAIRE.ht
 ### How to run the script from a container image:
 
 The script is actually hosted in a Ubuntu Container which can be run using a Container runtime such as podman, docker, ...
+
 To do so, you can run the command like `docker run --rm --name packs_tracker -v /Applications/Hearthstone/Logs/:/Applications/Hearthstone/Logs/ -v /Users/myuser/Hearthstone:/Hearthstone/data  quay.io/akinaux/hearthstone_packs_tracker /Hearthstone/packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p -F /Hearthstone/data`
 
 In this command:
- "-v /Applications/Hearthstone/Logs/:/Applications/Hearthstone/Logs/" => this will export your local folder /Applications/Hearthstone/Logs/ into the container (you may have to share this folder in your Container application)
- "-v /Users/myuser/Hearthstone:/Hearthstone/data" => This will export your local folder /Users/myuser/Hearthstone into the container as /Hearthstone/data
- "quay.io/akinaux/hearthstone_packs_tracker" => This will download the Container image from quay.io
-The last part of the command "/Hearthstone/packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p -F /Hearthstone/data" is the part to actually run the script into the container as describe previsouly
+- "-v /Applications/Hearthstone/Logs/:/Applications/Hearthstone/Logs/" => this will export your local folder /Applications/Hearthstone/Logs/ into the container (you may have to share this folder in your Container application)
+- "-v /Users/myuser/Hearthstone:/Hearthstone/data" => This will export your local folder /Users/myuser/Hearthstone into the container as /Hearthstone/data
+-  "quay.io/akinaux/hearthstone_packs_tracker" => This will download the Container image from quay.io
+- The last part of the command "/Hearthstone/packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p -F /Hearthstone/data" is the part to actually run the script into the container as describe previsouly
 
+To retrieve the latest version of the Container image, please run the command:
+- docker pull quay.io/akinaux/hearthstone_packs_tracker
+
+#### Know Issues:
+- The data protection is only working if you extract the data from the log on the same day. Running the script from the same log on the different day will duplicate the imported packs
