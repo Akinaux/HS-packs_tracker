@@ -512,7 +512,10 @@ fct_display() {
       HTMLFILE="$(pwd)/$(basename ${HTMLFILE})"
     fi
     echo -e "\nURL to Access the HTML file: file://${HTMLFILE}\n"
-    open file://${HTMLFILE}
+    if [[ ! -z $(which open | grep -v "not found") ]]
+    then
+      open file://${HTMLFILE}
+    fi
   fi
 }
 

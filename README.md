@@ -108,3 +108,15 @@ Progress : [########################################] 100% (98/98)
 URL to Access the HTML file: file:///Users/[...]/packs_tracker_DARKMOON_FAIRE.html
 ~~~
 [HTML sample file](https://htmlpreview.github.io/?https://github.com/Akinaux/HS-packs_tracker/blob/main/samples/packs_tracker_DARKMOON_FAIRE.html)
+
+### How to run the script from a container image:
+
+The script is actually hosted in a Ubuntu Container which can be run using a Container runtime such as podman, docker, ...
+To do so, you can run the command like `docker run --rm --name packs_tracker -v /Applications/Hearthstone/Logs/:/Applications/Hearthstone/Logs/ -v /Users/myuser/Hearthstone:/Hearthstone/data  quay.io/akinaux/hearthstone_packs_tracker /Hearthstone/packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p -F /Hearthstone/data`
+
+In this command:
+ "-v /Applications/Hearthstone/Logs/:/Applications/Hearthstone/Logs/" => this will export your local folder /Applications/Hearthstone/Logs/ into the container (you may have to share this folder in your Container application)
+ "-v /Users/myuser/Hearthstone:/Hearthstone/data" => This will export your local folder /Users/myuser/Hearthstone into the container as /Hearthstone/data
+ "quay.io/akinaux/hearthstone_packs_tracker" => This will download the Container image from quay.io
+The last part of the command "/Hearthstone/packs_tracker.sh -a display -e DARKMOON_FAIRE -f html -p -F /Hearthstone/data" is the part to actually run the script into the container as describe previsouly
+
