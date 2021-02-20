@@ -1,5 +1,7 @@
 #!/bin/bash
 #set -vx
+HS_VERSION=19.6
+HS_PATCH=74257
 
 # Functions
 
@@ -20,6 +22,7 @@ fct_usage() {
   echo "	-t: Tail the database to display only <number> packs"
   echo "	-W: Wait for packs from the logfile to extract (use Ctrl+C to break the script)"
   echo "	-d: Run the script in debug mode (debug, info) [Suggested: info]"
+  echo "Based on Hearthstone: ${HS_VERSION} - Patch: ${HS_PATCH}"
   exit 1
 }
 
@@ -126,6 +129,10 @@ fct_inject_json() {
     "DMF YOP"|"DMF"|"YOP")
       Set="DARKMOON_FAIRE"
       EXT_release=17/11/2020
+      ;;
+    "BAR")
+      Set="THE_BARRENS"
+      EXT_release=06/04/2021
       ;;
     *)
       CLASSES=""
@@ -239,6 +246,9 @@ fct_set_collectable() {
         ;;
       YEAR_OF_THE_DRAGON)
         Collectable_cards=$(jq -r "sort_by(.rarity,.id) | .[] |  select((.set == \"YEAR_OF_THE_DRAGON\") or (.set == \"DALARAN\") or (.set == \"ULDUM\") or (.set == \"DRAGONS\")  or (.set == \"HOF\"))" ${Latest_file})
+        ;;
+      YEAR_OF_THE_GRYPHON)
+        Collectable_cards=$(jq -r "sort_by(.rarity,.id) | .[] |  select((.set == \"YEAR_OF_THE_GRYPHON\") or (.set == \"THE_BARRENS\"))" ${Latest_file})
         ;;
       *)
         Collectable_cards=$(jq -r "sort_by(.rarity,.id) | .[] |  select((.set == \"$Extension\") or (.set == \"HOF\"))" ${Latest_file})
