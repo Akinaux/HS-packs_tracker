@@ -55,7 +55,7 @@ fct_inject_json() {
   sorted_unique_ids=($(echo "${PackSet[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
   Set=""
   case "${sorted_unique_ids[@]}" in
-    "CS1 CS2 EX1 NEW1 tt"|"CS1 CS2 EX1 NEW1"|"CS1 CS2 EX1 tt"|"CS1 CS2 NEW1 tt"|"CS1 EX1 NEW1 tt"|"CS1 CS2 tt"|"CS1 CS2 NEW1"|"CS1 CS2 EX1"|"CS1 EX1 tt"|"CS1 EX1 NEW1"|"CS1 NEW1 tt"|"CS1 CS2"|"CS1 EX1"|"CS1 NEW1"|"CS1 tt"|"CS2 EX1 NEW1"|"CS2 EX1 tt"|"CS2 NEW1 tt"|"CS2 EX1"|"CS2 NEW1"|"CS2 tt"|"EX1 NEW1"|"EX1 tt"|"NEW1 tt"|"CS1"|"CS2"|"EX1"|"NEW1"|"tt")
+    "CS1 CS2 EX1 NEW1 tt"|"CS1 CS2 EX1 NEW1"|"CS1 CS2 EX1 tt"|"CS1 CS2 NEW1 tt"|"CS1 EX1 NEW1 tt"|"CS1 CS2 tt"|"CS1 CS2 NEW1"|"CS1 CS2 EX1"|"CS1 EX1 tt"|"CS1 EX1 NEW1"|"CS1 NEW1 tt"|"CS1 CS2"|"CS1 EX1"|"CS1 NEW1"|"CS1 tt"|"CS2 EX1 NEW1 tt"|"CS2 EX1 NEW1"|"CS2 EX1 tt"|"CS2 NEW1 tt"|"CS2 EX1"|"CS2 NEW1"|"CS2 tt"|"EX1 NEW1 tt"|"EX1 NEW1"|"EX1 tt"|"NEW1 tt"|"CS1"|"CS2"|"EX1"|"NEW1"|"tt")
       Set="EXPERT1"
       ;;
     "GVG")
